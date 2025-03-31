@@ -6,16 +6,17 @@ import os
 
 button = Button(26)
 camera =Picamera2()
-path_var= os.environ.get('GLOBAL_SES_PATH')
-print(f"Path variable: {path_variable}")
+path_var= os.environ.get("GLOBAL_SES_PATH")
+
 
 def capture():
-    if path_variable:
-        print(f"Path variable: {path_variable}")
+    if path_var:
+        print(f"Path variable: {path_var}")
     else:
-        print("Path variable not set." )   
+        print("Path variable not set."  )  
+        path_var='/home/pi/photos'
     
-    filename=f"{path_var}/photo_{datetime.now():%Y-%m-%d-%H-%M-%S}}.png"
+    filename=f"{path_var}/photo_{datetime.now():%Y-%m-%d-%H-%M-%S}.png"
     camera.capture_file(filename,format="png")
     
     
