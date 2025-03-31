@@ -7,7 +7,7 @@ import os
 button = Button(26)
 camera =Picamera2()
 path_var= os.environ.get('GLOBAL_SES_PATH')
-
+print(f"Path variable: {path_variable}"
 
 def capture():
     if path_variable:
