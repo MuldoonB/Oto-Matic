@@ -7,7 +7,7 @@ import time
 
 button = Button(26)
 camera =Picamera2()
-path_var= os.environ.get("GLOBAL_SES_PATH")
+path_var= '/home/pi/photos'
 camera.start()
 
 def capture():
@@ -15,7 +15,7 @@ def capture():
         print(f"Path variable: {path_var}")
     else:
         print("Path variable not set."  )  
-        path_var='/home/pi/photos'
+       
             
 
     time.sleep(2)
