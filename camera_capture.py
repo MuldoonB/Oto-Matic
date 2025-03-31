@@ -15,7 +15,7 @@ def capture():
     else:
         print("Path variable not set." )   
     
-    filename=f"{path_var}/photo_{datetime.now():%Y-%m-%d-%H-%M-%S}}.png")
+    filename=f"{path_var}/photo_{datetime.now():%Y-%m-%d-%H-%M-%S}}.png"
     camera.capture_file(filename,format="png")
     
     
