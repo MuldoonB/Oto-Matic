@@ -19,7 +19,9 @@ def capture():
     filename=f"{path_var}/photo_{datetime.now():%Y-%m-%d-%H-%M-%S}.png"
     camera.capture_file(filename,format="png")
     
-    
-button.when_pressed = capture
-
-pause()
+while True:
+    button.wait_for_press()  # Blocks until the button is pressed
+    capture()
+    print("Ready for the next press...")
+    # Optional: Add a small delay to avoid rapid triggers if the button bounces
+    time.sleep(1)
