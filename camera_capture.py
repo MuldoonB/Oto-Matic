@@ -9,6 +9,7 @@ button = Button(26)
 camera =Picamera2()
 path_var= '/home/pi/photos'
 camera.start()
+camera.resolution=(2592, 1944)
 
 def capture():
     if path_var:
