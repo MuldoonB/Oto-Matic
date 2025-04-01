@@ -9,16 +9,17 @@ button = Button(26)
 camera =Picamera2()
 path_var= '/home/pi/photos'
 
-# Get the available configurations for still capture
-still_config = camera.create_still_configuration()
+# Get the available configurations
+available_configs = camera.camera_config
  
-#Find the highest resolution available in the still configurations
-max_resolution = (0, 0)
-for config in camera.list_camera_configs():
-    if config["use_case"] == "still":
-        size = config["main"]["size"]
-        if size[0] * size[1] > max_resolution[0] * max_resolution[1]:
-            max_resolution = size
+# Iterate through the available configurations and find the highest resolution for still capture
+for use_case, configs in available_configs.items():
+    if use_case == "still":
+        for config in configs:
+            if "main" in config and "size" in config["main"]:
+                size = config["main"]["size"]
+                if size[0] * size[1] > max_resolution[0] * max_resolution[1]:
+                    max_resolution = size
 
 # Configure the camera with the maximum still resolution
 if max_resolution != (0, 0):
