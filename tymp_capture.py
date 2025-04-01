@@ -1,5 +1,5 @@
 from gpiozero import Button, DigitalOutputDevice, Motor
-from picamera import PiCamera
+from picamera2 import PiCamera2
 from time import sleep
 from signal import pause
 
@@ -79,7 +79,7 @@ def button_pressed():
         # Initialize camera if not already done
         if camera is None:
             try:
-                camera = PiCamera(resolution=VIDEO_RESOLUTION, framerate=VIDEO_FRAMERATE)
+                camera = PiCamera2(resolution=VIDEO_RESOLUTION, framerate=VIDEO_FRAMERATE)
             except Exception as e:
                 print(f"Error initializing camera: {e}")
                 is_recording = False
