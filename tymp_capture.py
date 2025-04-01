@@ -1,5 +1,5 @@
-from gpiozero import Button, DigitalOutputDevice, Motor
-from picamera2 import Picamera2
+from gpiozero import Button, DigitalOutputDevice
+from picamera2 import Picamera2, Preview
 from time import sleep
 from signal import pause
 
@@ -14,13 +14,13 @@ BUTTON_PIN = 5  # Example GPIO pin for the button (adjust to your wiring)
 
 # Stepper Motor Parameters
 STEPS_PER_REVOLUTION = 200  # Adjust based on your motor
-STEP_DELAY = 0.005        # Adjust for speed
-FORWARD_STEPS = 100       # Number of steps to move forward
-BACKWARD_STEPS = 100      # Number of steps to move backward
+STEP_DELAY = 0.005         # Adjust for speed
+FORWARD_STEPS = 100        # Number of steps to move forward
+BACKWARD_STEPS = 100       # Number of steps to move backward
 
 # Camera Settings
-RECORDING_TIME = 5        # Duration of the video recording in seconds
-OUTPUT_FILENAME = "video_gpiozero.h264"
+RECORDING_TIME = 5          # Duration of the video recording in seconds (not directly used with button press)
+OUTPUT_FILENAME = "video_picamera2.mp4"
 VIDEO_RESOLUTION = (1920, 1080) # 1080p resolution
 VIDEO_FRAMERATE = 30          # 30 frames per second
 
@@ -79,7 +79,10 @@ def button_pressed():
         # Initialize camera if not already done
         if camera is None:
             try:
-                camera = Picamera2(resolution=VIDEO_RESOLUTION, framerate=VIDEO_FRAMERATE)
+                camera = Picamera2()
+                config = camera.create_video_configuration(main={"size": VIDEO_RESOLUTION})
+                camera.configure(config)
+                camera.start()
             except Exception as e:
                 print(f"Error initializing camera: {e}")
                 is_recording = False
@@ -88,7 +91,7 @@ def button_pressed():
         try:
             # Start recording
             camera.start_recording(OUTPUT_FILENAME)
-            print(f"Recording started at {VIDEO_RESOLUTION} {VIDEO_FRAMERATE}fps...")
+            print(f"Recording started at {VIDEO_RESOLUTION} {VIDEO_FRAMERATE}fps (approximate)...")
 
             # Move stepper motor forward
             print("Moving stepper forward...")
@@ -114,7 +117,7 @@ def button_pressed():
 
         except Exception as e:
             print(f"An error occurred during recording or motor movement: {e}")
-            if camera is not None and camera.recording:
+            if camera is not None and camera.is_recording():
                 camera.stop_recording()
         finally:
             is_recording = False
@@ -124,13 +127,14 @@ def button_pressed():
 
 def main():
     global camera
-    print("Ready. Press the button to start recording at 1080p 30fps and motor movement (using gpiozero).")
+    print("Ready. Press the button to start recording at 1080p (approx) 30fps and motor movement (using picamera2).")
     button.when_pressed = button_pressed
 
     try:
         pause()  # Keep the script running and listening for button presses
     except KeyboardInterrupt:
         if camera is not None:
+            camera.stop()
             camera.close()
         stop_stepper()
         print("GPIO and camera resources cleaned up.")
