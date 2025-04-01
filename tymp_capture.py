@@ -1,5 +1,7 @@
 from gpiozero import Button, DigitalOutputDevice
 from picamera2 import Picamera2, Preview
+from picamera2.encoders import H264Encoder
+from picamera2.outputs import FfmpegOutput
 from time import sleep
 from signal import pause
 
@@ -20,9 +22,10 @@ BACKWARD_STEPS = 100       # Number of steps to move backward
 
 # Camera Settings
 RECORDING_TIME = 5          # Duration of the video recording in seconds (not directly used with button press)
-OUTPUT_FILENAME = "/home/pi/videos/video_picamera2.mp4"
+OUTPUT_FILENAME = FfmpegOutput("/home/pi/videos/video_picamera2.mp4")
 VIDEO_RESOLUTION = (1920, 1080) # 1080p resolution
 VIDEO_FRAMERATE = 30          # 30 frames per second
+encoder - H264Encoder(100000000)
 
 # Global flag to track recording state
 is_recording = False
@@ -90,7 +93,7 @@ def button_pressed():
 
         try:
             # Start recording
-            camera.start_recording(OUTPUT_FILENAME)  # Pass the output filename
+            camera.start_recording(encoder,output=OUTPUT_FILENAME)  # Pass the output filename
             print(f"Recording started at {VIDEO_RESOLUTION} {VIDEO_FRAMERATE}fps (approximate)...")
 
             # Move stepper motor forward
