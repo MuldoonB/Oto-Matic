@@ -25,7 +25,7 @@ RECORDING_TIME = 5          # Duration of the video recording in seconds (not di
 OUTPUT_FILENAME = FfmpegOutput("/home/pi/videos/video_picamera2.mp4")
 VIDEO_RESOLUTION = (1920, 1080) # 1080p resolution
 VIDEO_FRAMERATE = 30          # 30 frames per second
-encoder - H264Encoder(100000000)
+encoder = H264Encoder(100000000)
 
 # Global flag to track recording state
 is_recording = False
