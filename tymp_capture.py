@@ -117,14 +117,13 @@ def button_pressed():
 
         except Exception as e:
             print(f"An error occurred during recording or motor movement: {e}")
-            if camera is not None and camera.is_recording():
+            if camera is not None and is_recording:  # Check our flag
                 camera.stop_recording()
         finally:
             is_recording = False
             print("Ready for next button press.")
     else:
         print("Recording is already in progress. Ignoring button press.")
-
 def main():
     global camera
     print("Ready. Press the button to start recording at 1080p (approx) 30fps and motor movement (using picamera2).")
