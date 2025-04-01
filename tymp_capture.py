@@ -20,7 +20,7 @@ BACKWARD_STEPS = 100       # Number of steps to move backward
 
 # Camera Settings
 RECORDING_TIME = 5          # Duration of the video recording in seconds (not directly used with button press)
-OUTPUT_FILENAME = "video_picamera2.mp4"
+OUTPUT_FILENAME = "/home/pi/videos/video_picamera2.mp4"
 VIDEO_RESOLUTION = (1920, 1080) # 1080p resolution
 VIDEO_FRAMERATE = 30          # 30 frames per second
 
@@ -67,10 +67,10 @@ def backward_stepper(delay, steps):
         sleep(delay)
         set_step(1, 0, 0, 0)
         sleep(delay)
-
 def button_pressed():
     global is_recording
     global camera
+    global OUTPUT_FILENAME
 
     if not is_recording:
         print("Button pressed - Starting recording and motor movement...")
@@ -90,7 +90,7 @@ def button_pressed():
 
         try:
             # Start recording
-            camera.start_recording(OUTPUT_FILENAME)
+            camera.start_recording(OUTPUT_FILENAME)  # Pass the output filename
             print(f"Recording started at {VIDEO_RESOLUTION} {VIDEO_FRAMERATE}fps (approximate)...")
 
             # Move stepper motor forward
@@ -124,6 +124,8 @@ def button_pressed():
             print("Ready for next button press.")
     else:
         print("Recording is already in progress. Ignoring button press.")
+        
+        
 def main():
     global camera
     print("Ready. Press the button to start recording at 1080p (approx) 30fps and motor movement (using picamera2).")
