@@ -1,0 +1,103 @@
+{
+  "tympanometry_reference_metrics": {
+    "pediatric": {
+      "description": "Reference metrics for tympanometry in pediatric individuals (typically infants to adolescents). Ranges may vary slightly based on specific age groups and equipment.",
+      "peak_pressure_daPa": {
+        "typical_range": "-150 to +100",
+        "notes": "Also referred to as tympanometric peak pressure (TPP). Indicates the pressure at which the eardrum is most compliant. May be slightly more negative in younger infants."
+      },
+      "peak_compensated_static_acoustic_admittance_Yml": {
+        "typical_range": "0.2 to 1.0",
+        "notes": "Measures the height of the tympanogram at the peak pressure, reflecting the mobility of the middle ear system. Values generally increase with age."
+      },
+      "ear_canal_volume_Vea_ml": {
+        "typical_range": "0.3 to 1.0 (infants), 0.6 to 1.5 (children)",
+        "notes": "Estimates the volume of the ear canal. Values increase with age. Used to help interpret tympanogram type (e.g., large volume with a flat tracing suggests a perforation or patent PE tube)."
+      },
+      "tympanometric_width_TW_daPa": {
+        "typical_range": "50 to 150",
+        "notes": "Measures the width of the tympanogram at half the peak height. Reflects the sharpness of the peak and is related to middle ear stiffness. Wider widths can suggest middle ear effusion."
+      },
+      "gradient_daPa": {
+        "typical_range": "Greater than 200 (often used as a cutoff for normal)",
+        "notes": "Similar to tympanometric width, but calculated differently. A steep gradient suggests a normal middle ear system."
+      },
+      "tympanogram_type": {
+        "description": "Categorization of the tympanogram shape.",
+        "type_A": "Normal middle ear function (sharp peak near 0 daPa).",
+        "type_As": "Shallow peak, suggesting reduced middle ear compliance (e.g., otosclerosis, thickened eardrum).",
+        "type_Ad": "Deep peak, suggesting increased middle ear compliance or ossicular discontinuity.",
+        "type_B": "Flat tracing, suggesting middle ear effusion or probe occlusion.",
+        "type_C": "Peak pressure significantly negative (greater than -150 daPa), suggesting negative middle ear pressure (e.g., resolving otitis media, Eustachian tube dysfunction)."
+      }
+    },
+    "adult": {
+      "description": "Reference metrics for tympanometry in adult individuals.",
+      "peak_pressure_daPa": {
+        "typical_range": "-150 to +100",
+        "notes": "Similar to pediatric ranges."
+      },
+      "peak_compensated_static_acoustic_admittance_Yml": {
+        "typical_range": "0.3 to 1.7",
+        "notes": "Generally higher than pediatric values due to larger middle ear space."
+      },
+      "ear_canal_volume_Vea_ml": {
+        "typical_range": "0.6 to 2.0",
+        "notes": "Larger than pediatric values."
+      },
+      "tympanometric_width_TW_daPa": {
+        "typical_range": "50 to 110",
+        "notes": "Generally narrower than pediatric ranges in healthy adults."
+      },
+      "gradient_daPa": {
+        "typical_range": "Greater than 200 (often used as a cutoff for normal)",
+        "notes": "Similar to pediatric ranges."
+      },
+      "tympanogram_type": {
+        "description": "Categorization of the tympanogram shape.",
+        "type_A": "Normal middle ear function.",
+        "type_As": "Shallow peak, suggesting reduced middle ear compliance.",
+        "type_Ad": "Deep peak, suggesting increased middle ear compliance or ossicular discontinuity.",
+        "type_B": "Flat tracing, suggesting middle ear effusion or probe occlusion.",
+        "type_C": "Peak pressure significantly negative, suggesting negative middle ear pressure."
+      }
+    },
+    "elderly": {
+      "description": "Reference metrics for tympanometry in elderly individuals (typically 65 years and older). Age-related changes can affect these metrics.",
+      "peak_pressure_daPa": {
+        "typical_range": "-150 to +100",
+        "notes": "Similar to adult ranges, but may show a slightly wider distribution."
+      },
+      "peak_compensated_static_acoustic_admittance_Yml": {
+        "typical_range": "0.3 to 1.4",
+        "notes": "May show a slight decrease compared to younger adults due to age-related changes in the middle ear structures (e.g., increased stiffness)."
+      },
+      "ear_canal_volume_Vea_ml": {
+        "typical_range": "0.6 to 2.0",
+        "notes": "Similar to adult ranges, but consider potential for collapsed ear canals."
+      },
+      "tympanometric_width_TW_daPa": {
+        "typical_range": "60 to 150",
+        "notes": "May show a slightly wider range compared to younger adults due to age-related changes."
+      },
+      "gradient_daPa": {
+        "typical_range": "Variable, may be less reliable as a sole indicator due to age-related changes.",
+        "notes": "Interpret with caution in conjunction with other metrics."
+      },
+      "tympanogram_type": {
+        "description": "Categorization of the tympanogram shape. Age-related changes can influence the prevalence of certain types.",
+        "type_A": "Still considered normal, but prevalence may be lower than in younger adults.",
+        "type_As": "May be more common due to increased stiffness of the middle ear system.",
+        "type_Ad": "Less common but still possible.",
+        "type_B": "Indicates middle ear effusion or probe occlusion, regardless of age.",
+        "type_C": "May be present, but consider potential for chronic Eustachian tube dysfunction."
+      },
+      "important_considerations": [
+        "Reference ranges can vary slightly depending on the specific equipment and normative data used.",
+        "Clinical interpretation should always consider the individual's history, other audiological findings, and otoscopic examination.",
+        "Age ranges provided are general guidelines, and individual variability exists.",
+        "For elderly individuals, consider potential for cerumen impaction and collapsed ear canals, which can affect results."
+      ]
+    }
+  }
+}
