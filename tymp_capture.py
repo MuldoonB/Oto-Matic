@@ -17,9 +17,9 @@ BUTTON_PIN = 5  # Example GPIO pin for the button (adjust to your wiring)
 
 # Stepper Motor Parameters
 STEPS_PER_REVOLUTION = 200  # Adjust based on your motor
-STEP_DELAY = 0.05        # Adjust for speed
-FORWARD_STEPS = 200       # Number of steps to move forward
-BACKWARD_STEPS = 200      # Number of steps to move backward
+STEP_DELAY = 0.0005        # Adjust for speed
+FORWARD_STEPS = 1000       # Number of steps to move forward
+BACKWARD_STEPS = 1000      # Number of steps to move backward
 
 # Camera Settings
 RECORDING_TIME = 5          # Duration of the video recording in seconds (not directly used with button press)
