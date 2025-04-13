@@ -17,7 +17,7 @@ BUTTON_PIN = 5  # Example GPIO pin for the button (adjust to your wiring)
 
 # Stepper Motor Parameters
 STEPS_PER_REVOLUTION = 200  # Adjust based on your motor
-STEP_DELAY = 0.0005        # Adjust for speed
+STEP_DELAY = 0.005        # Adjust for speed
 FORWARD_STEPS = 400       # Number of steps to move forward
 BACKWARD_STEPS = 400      # Number of steps to move backward
 
