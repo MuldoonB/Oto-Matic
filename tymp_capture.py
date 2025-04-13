@@ -39,7 +39,7 @@ in3 = DigitalOutputDevice(IN3_PIN)
 in4 = DigitalOutputDevice(IN4_PIN)
 
 # Define the button
-button = Button(BUTTON_PIN)
+button = Button(BUTTON_PIN, pull_up=True)
 
 def set_step(w1, w2, w3, w4):
     in1.value = w1
